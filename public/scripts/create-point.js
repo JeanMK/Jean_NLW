@@ -46,7 +46,6 @@ document
 
 // Itens de coleta
 // pegar todos os Lis
-
 const itensToColect = document.querySelectorAll(".items-grid li")
 
 for(const item of itensToColect){
@@ -66,7 +65,8 @@ function handSelectedItem(event) {
 
     const itemId = itemLi.dataset.id
 
-    const alreadySelected = selectedItems.findIndex( function(item) {
+    // verificar se existem items selecionados, se sim pegar os itens selecionados
+    const alreadySelected = selectedItems.findIndex( item => {
         const itemFound = item == itemId // isso será true ou false
         return itemFound
     })
@@ -86,6 +86,9 @@ function handSelectedItem(event) {
         // se não estiver selecionado, adicionar a seleção
         selectedItems.push(itemId)
     }
+
+    console.log(selectedItems);
+
 
     // atualizar o campo esconddo com os items selecionados
     colecterdItms.value = selectedItems

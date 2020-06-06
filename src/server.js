@@ -63,14 +63,10 @@ server.post("/savepoint", (req, res) => {
 
     function afterInsertdata(err){
         if(err) {
-            return Console.log(err)
+            // return Console.log(err)
         }
 
-       Console.log("Deu boa, cadastrou")
-       Console.log(this)
-
         return res.render("create-point.html", {saved: true})
-
     }
 
     db.run(query, values, afterInsertdata)
@@ -89,7 +85,7 @@ server.get("/search", (req, res) => {
     // pegar os dados do banco de dados
     db.all(`SELECT * FROM places WHERE city LIKE '%${search}%' `, function(err, rows) {
         if(err) {
-            return Console.log(err)
+            // return Console.log(err)
         }
 
         const total = rows.length
